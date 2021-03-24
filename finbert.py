@@ -33,7 +33,7 @@ class Config(object):
                  num_train_epochs=10.0,
                  warm_up_proportion=0.1,
                  no_cuda=False,
-                 do_lower_case=False,
+                 do_lower_case=False, #changed to False from True
                  seed=42,
                  local_rank=-1,
                  gradient_accumulation_steps=1,
@@ -42,7 +42,7 @@ class Config(object):
                  discriminate=True,
                  gradual_unfreeze=True,
                  encoder_no=12,
-                 base_model='aubmindlab/bert-base-arabertv2'):
+                 base_model='aubmindlab/bert-base-arabertv2'): #chaged to arabert from bert-base-uncased
         """
         Parameters
         ----------
@@ -592,7 +592,7 @@ def predict(text, model, write_to_csv=False, path=None):
         path to write the string
     """
     model.eval()
-    tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
+    tokenizer = AutoTokenizer.from_pretrained('aubmindlab/bert-base-arabertv2') #changed to arabert from bert-base-uncased
     sentences = sent_tokenize(text)
 
     label_list = ['positive', 'negative', 'neutral']
