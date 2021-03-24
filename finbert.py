@@ -33,7 +33,7 @@ class Config(object):
                  num_train_epochs=10.0,
                  warm_up_proportion=0.1,
                  no_cuda=False,
-                 do_lower_case=True,
+                 do_lower_case=False,
                  seed=42,
                  local_rank=-1,
                  gradient_accumulation_steps=1,
