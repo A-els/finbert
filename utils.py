@@ -11,6 +11,7 @@ import os
 import torch
 
 import numpy as np
+import pandas as pd
 import logging
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s -   %(message)s',
@@ -66,13 +67,14 @@ class DataProcessor(object):
     @classmethod
     def _read_tsv(cls, input_file):
         """Reads a tab separated value file."""
-        with open(input_file, "r") as f:
-            reader = csv.reader(f, delimiter="\t")
-            lines = []
-            for line in reader:
-                if sys.version_info[0] == 2:
-                    line = list(unicode(cell, 'utf-8') for cell in line)
-                lines.append(line)
+        lines = []
+        df = pd.read_csv(input_file)
+        for (i,row) in df.iterrows():
+            sentence = row['sentence']
+            sentiment = row['sentiment']
+            line = [i, sentence, sentiment]
+            lines.append(line)
+          
         return lines
 
 
