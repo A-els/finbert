@@ -197,7 +197,7 @@ class FinBert(object):
                 examples) / self.config.train_batch_size / self.config.gradient_accumulation_steps) * self.config.num_train_epochs
 
         if phase == 'train':
-            train = pd.read_csv(os.path.join(self.config.data_dir, 'train.csv'), sep='\t', index_col=False)
+            train = pd.read_csv(os.path.join(self.config.data_dir, 'train.csv'), index_col=False) #removed sep='\t'
             weights = list()
             labels = self.label_list
 
