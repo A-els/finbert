@@ -70,8 +70,8 @@ class DataProcessor(object):
         lines = []
         df = pd.read_csv(input_file)
         for (i,row) in df.iterrows():
-            sentence = row['sentence']
-            sentiment = row['sentiment']
+            sentence = row['text']
+            sentiment = row['label']
             line = [i, sentence, sentiment]
             lines.append(line)
           
