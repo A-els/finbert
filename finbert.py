@@ -491,7 +491,7 @@ class FinBert(object):
         output_config_file = os.path.join(self.config.model_dir, CONFIG_NAME)
         with open(output_config_file, 'w') as f:
             f.write(model_to_save.config.to_json_string())
-        os.remove(self.config.model_dir / ('temporary' + str(best_model)))
+        os.remove(self.config.model_dir + '/' + ('temporary' + str(best_model)))
         return model
 
     def evaluate(self, model, examples):
