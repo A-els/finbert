@@ -483,7 +483,7 @@ class FinBert(object):
                 best_model = i
 
         # Save a trained model and the associated configuration
-        checkpoint = torch.load(self.config.model_dir / ('temporary' + str(best_model)))
+        checkpoint = torch.load(self.config.model_dir + '/' + ('temporary' + str(best_model))) #same fix
         model.load_state_dict(checkpoint['state_dict'])
         model_to_save = model.module if hasattr(model, 'module') else model  # Only save the model it-self
         output_model_file = os.path.join(self.config.model_dir, WEIGHTS_NAME)
