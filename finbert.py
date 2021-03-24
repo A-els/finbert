@@ -42,7 +42,7 @@ class Config(object):
                  discriminate=True,
                  gradual_unfreeze=True,
                  encoder_no=12,
-                 base_model='bert-base-uncased'):
+                 base_model='aubmindlab/bert-base-arabertv2'):
         """
         Parameters
         ----------
