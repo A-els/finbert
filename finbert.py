@@ -475,11 +475,11 @@ class FinBert(object):
             if valid_loss == min(self.validation_losses):
 
                 try:
-                    os.remove(self.config.model_dir / ('temporary' + str(best_model)))
+                    os.remove(self.config.model_dir + '/' + ('temporary' + str(best_model))) #fixed the / not being a string
                 except:
                     print('No best model found')
                 torch.save({'epoch': str(i), 'state_dict': model.state_dict()},
-                           self.config.model_dir / ('temporary' + str(i)))
+                           self.config.model_dir + '/' + ('temporary' + str(i))) #same fix
                 best_model = i
 
         # Save a trained model and the associated configuration
