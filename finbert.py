@@ -26,9 +26,9 @@ class Config(object):
                  data_dir,
                  bert_model,
                  model_dir,
-                 max_seq_length=64,
-                 train_batch_size=32,
-                 eval_batch_size=32,
+                 max_seq_length=512, #changed to 512 from 64
+                 train_batch_size=16, #changed to 16 from 32
+                 eval_batch_size=16, #changed to 16 from 31
                  learning_rate=5e-5,
                  num_train_epochs=10.0,
                  warm_up_proportion=0.1,
