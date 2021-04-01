@@ -13,7 +13,7 @@ from finbert.utils import *
 import numpy as np
 import logging
 
-from transformers.optimization import AdamW, get_linear_schedule_with_warmup
+from transformers.optimization import AdamW, get_linear_schedule_with_warmup, get_constant_schedule
 from transformers import AutoTokenizer
 
 logger = logging.getLogger(__name__)
@@ -285,10 +285,12 @@ class FinBert(object):
                           lr=self.config.learning_rate,
                           correct_bias=False)
 
-        self.scheduler = get_linear_schedule_with_warmup(self.optimizer,
-                                                    num_warmup_steps=self.num_warmup_steps,
-                                                    num_training_steps=self.num_train_optimization_steps)
-
+        #self.scheduler = get_linear_schedule_with_warmup(self.optimizer,
+                                                    #num_warmup_steps=self.num_warmup_steps,
+                                                    #num_training_steps=self.num_train_optimization_steps)
+                
+        self.scheduler = get_constant_schedule(self.optimizer) #using a constant scheduler for testing
+        
         return model
 
     def get_loader(self, examples, phase):
