@@ -283,7 +283,7 @@ class FinBert(object):
 
         self.optimizer = AdamW(optimizer_grouped_parameters,
                           lr=self.config.learning_rate,
-                          correct_bias=False)
+                          correct_bias=True)
 
         #self.scheduler = get_linear_schedule_with_warmup(self.optimizer,
                                                     #num_warmup_steps=self.num_warmup_steps,
